@@ -123,11 +123,13 @@
     <ClCompile Include="App\main.cpp" />
     <ClCompile Include="Engine\Window\Window.cpp" />
     <ClCompile Include="Engine\Graphics\GraphicsEngine.cpp" />
+    <ClCompile Include="Engine\Graphics\SwapChain\SwapChain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App\AppWindow.h" />
     <ClInclude Include="Engine\Window\Window.h" />
     <ClInclude Include="Engine\Graphics\GraphicsEngine.h" />
+    <ClInclude Include="Engine\Graphics\SwapChain\SwapChain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

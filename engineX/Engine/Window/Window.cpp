@@ -16,19 +16,19 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 	{
 	case WM_CREATE:
 	{
-		// Event fired when the window is created
-		// collected here..
+		// Событие срабатывает при создании 
 		Window* window = (Window*)((LPCREATESTRUCT)lparam)->lpCreateParams;
-		// .. and then stored for later lookup
-		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)window);
+		// .. а затем сохраняется для последующего поиска
+		SetWindowLongPtr(hwnd, GWL_USERDATA, (LONG_PTR)window);
+		window->setHWND(hwnd);
 		window->onCreate();
 		break;
 	}
 
 	case WM_DESTROY:
 	{
-		// Event fired when the window is destroyed
-		Window* window = (Window*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+		// Событие срабатывает, когда окно удаляется
+		Window* window = (Window*)GetWindowLong(hwnd, GWL_USERDATA);
 		window->onDestroy();
 		::PostQuitMessage(0);
 		break;
@@ -46,8 +46,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 bool Window::init()
 {
 
-
-	//Setting up WNDCLASSEX object
 	WNDCLASSEX wc;
 	wc.cbClsExtra = NULL;
 	wc.cbSize = sizeof(WNDCLASSEX);
@@ -62,28 +60,25 @@ bool Window::init()
 	wc.style = NULL;
 	wc.lpfnWndProc = &WndProc;
 
-	if (!::RegisterClassEx(&wc)) // If the registration of class will fail, the function will return false
+	if (!::RegisterClassEx(&wc)) 
 		return false;
 
-	/*if (!window)
-		window = this;*/
 
-		//Creation of the window
+	//создание окна
 	m_hwnd = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, "MyWindowClass", "DirectX Application", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768,
 		NULL, NULL, NULL, this);
-
-	//if the creation fail return false
+ 
 	if (!m_hwnd)
 		return false;
 
-	//show up the window
+	//показать окно
 	::ShowWindow(m_hwnd, SW_SHOW);
 	::UpdateWindow(m_hwnd);
 
 
 
 
-	//set this flag to true to indicate that the window is initialized and running
+	//значение true, чтобы указать, что окно инициализировано и запущено
 	m_is_run = true;
 
 
@@ -112,7 +107,7 @@ bool Window::broadcast()
 
 bool Window::release()
 {
-	//Destroy the window
+	//Разрушить окно
 	if (!::DestroyWindow(m_hwnd))
 		return false;
 
@@ -122,6 +117,18 @@ bool Window::release()
 bool Window::isRun()
 {
 	return m_is_run;
+}
+
+void Window::setHWND(HWND hwnd)
+{
+	this->m_hwnd = hwnd;
+}
+
+RECT Window::getClienWindowRect()
+{
+	RECT rc;
+	::GetClientRect(this->m_hwnd, &rc);
+	return rc;
 }
 
 void Window::onCreate()

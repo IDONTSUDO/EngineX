@@ -11,10 +11,11 @@ public:
 	//Инициализация окна
 	bool init();
 	bool broadcast();
-	//Release the window
+	 
 	bool release();
 	bool isRun();
-
+	void setHWND(HWND hwnd);
+	RECT getClienWindowRect();
 	//События
 	virtual void onCreate();
 	virtual void onUpdate();
