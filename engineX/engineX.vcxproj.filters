@@ -9,12 +9,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>App</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Engine\Window.cpp" />
+    <ClCompile Include="App\main.cpp" />
+    <ClCompile Include="App\AppWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Engine\Window.h" />
+    <ClInclude Include="App\AppWindow.h" />
   </ItemGroup>
 </Project>
