@@ -126,6 +126,7 @@ bool Window::isRun()
 
 void Window::onCreate()
 {
+	
 }
 
 void Window::onUpdate()
