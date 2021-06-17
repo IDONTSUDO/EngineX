@@ -10,7 +10,6 @@ bool SwapChain::init(HWND hwnd, UINT width, UINT height)
 {
 
 	ID3D11Device* device = GraphicsEngine::get()->m_d3d_device;
-
 	DXGI_SWAP_CHAIN_DESC desc;
 	ZeroMemory(&desc, sizeof(desc));
 	desc.BufferCount = 1;
@@ -33,7 +32,7 @@ bool SwapChain::init(HWND hwnd, UINT width, UINT height)
 		return false;
 	}
 
-	return true;
+	return true;	 
 }
 
 bool SwapChain::realese()

@@ -5,7 +5,9 @@ class GraphicsEngine
 {
 public:
 	GraphicsEngine();
+	// Инициализируем GraphicsEngine и устройство DirectX 11
 	bool init();
+	// Освобождаем все загруженные ресурсы
 	bool realease();
 	~GraphicsEngine();
 
