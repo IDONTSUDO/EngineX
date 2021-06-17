@@ -14,11 +14,13 @@
     <ClCompile Include="App\AppWindow.cpp" />
     <ClCompile Include="Engine\Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="Engine\Graphics\SwapChain\SwapChain.cpp" />
+    <ClCompile Include="Engine\Graphics\DeviceContext\DeviceContext.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Window\Window.h" />
     <ClInclude Include="App\AppWindow.h" />
     <ClInclude Include="Engine\Graphics\GraphicsEngine.h" />
     <ClInclude Include="Engine\Graphics\SwapChain\SwapChain.h" />
+    <ClInclude Include="Engine\Graphics\DeviceContext\DeviceContext.h" />
   </ItemGroup>
 </Project>
